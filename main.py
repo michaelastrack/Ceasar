@@ -53,10 +53,11 @@ class EncryptHandler(webapp2.RequestHandler):
     def get (self):
         user_input = self.request.get("user_input")
         rotate = int(self.request.get("rot_amount"))
+        #user_input_escape = cgi.escape(user_input, quote = True)
         answer = encrypt(user_input, rotate)
 
         #escape_answer = cgi.escape(answer, quote = True)
-        # Does not handle spaces
+
         response = "<form action = '/encrypt'>"
         response += "<h2> Enter in some text to rotate </h2>"
         response += "<input type = text name = user_input value ={0} >".format(answer)
